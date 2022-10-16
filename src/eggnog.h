@@ -8,7 +8,7 @@
 
 #define URL_BUF 75      // general purpose string buffer
 #define MAXBUF 1024     // larger gen purpose string buffer
-#define SESSION 125     // session ids seem to be about 97 bytes but we need room for 'session='
+#define SESSION 160     // session ids seem to be about 128 bytes but we need room for 'session='
 
 char *get_input(char *url, char *session_id);
 
