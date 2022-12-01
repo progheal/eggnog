@@ -15,6 +15,7 @@
 
 #include "eggnog.h"
 
+static const char *useragent = "Eggnog, originally by @breakthatbass https://github.com/breakthatbass/eggnog, forked by @progheal https://github.com/progheal/eggnog";
 
 struct string {
     char *ptr;
@@ -87,6 +88,8 @@ char *get_input(char *url, char *session_id)
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_write_func);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &s);
 
+		curl_easy_setopt(curl, CURLOPT_USERAGENT, useragent);
+
 		res = curl_easy_perform(curl);
     
 		if (res != CURLE_OK) {
@@ -136,6 +139,8 @@ char *submit_puzzle_answer(char *url, char *session_id, char *header)
         // save the html results into a string so we can parse it
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_write_func);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &s);
+
+		curl_easy_setopt(curl, CURLOPT_USERAGENT, useragent);
 
         res = curl_easy_perform(curl);
 
